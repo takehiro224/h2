@@ -1,0 +1,17 @@
+plugins {
+   id 'java'
+   id 'org.springframework.boot' version '2.6.4'
+   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+   implementation 'org.springframework.boot:spring-boot-starter-web'
+   implementation 'org.projectlombok:lombok:1.18.22' // Lombokの依存関係
+   compileOnly 'org.projectlombok:lombok'
+   annotationProcessor 'org.projectlombok:lombok'
+   implementation 'com.h2database:h2:1.4.200' // 任意のバージョンを指定
+}
