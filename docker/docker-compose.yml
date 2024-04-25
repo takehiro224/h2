@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  mybatis-java:
+    container_name: mybatis-sample-container
+    build:
+      context: ./java
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    volumes:
+      - "..:/myapp:cached"
+    tty: true
+    depends_on:
+          - h2  # H2 Databaseのコンテナに依存
+    networks:
+      - my-network
+
+  h2:
+    container_name: h2-container
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - "9092:9092"  # H2 DatabaseのTCPポートを公開
+      - "8082:8082"  # H2 DatabaseのWebコンソールのポートを公開
+    networks:
+      - my-network
+  
+networks:
+  my-network:  # 同じネットワークを定義
