@@ -9,9 +9,10 @@ repositories {
 }
 
 dependencies {
-   implementation 'org.springframework.boot:spring-boot-starter-web'
+   implementation 'org.springframework.boot:spring-boot-starter-web' // Spring Bootフレームワーク
    implementation 'org.projectlombok:lombok:1.18.22' // Lombokの依存関係
-   compileOnly 'org.projectlombok:lombok'
-   annotationProcessor 'org.projectlombok:lombok'
-   implementation 'com.h2database:h2:1.4.200' // 任意のバージョンを指定
+   compileOnly 'org.projectlombok:lombok' // Lombokの依存関係
+   annotationProcessor 'org.projectlombok:lombok' // Lombokの依存関係
+   implementation 'com.h2database:h2:1.4.200' // H2 Database
+   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 }
