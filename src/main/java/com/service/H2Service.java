@@ -1,4 +1,4 @@
-package com;
+package com.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,16 +13,16 @@ public class H2Service {
 
     public void select() {
         Connection connection = null;
-        final String jdbcURL = "jdbc:h2://h2:9092/mem:test";
+        final String jdbcURL = "jdbc:h2://h2:9092/mem:testdb";
         try {
             connection = DriverManager.getConnection(jdbcURL, "sa", "");
             // データを取得
-            String selectSQL = "SELECT * FROM users";
+            String selectSQL = "SELECT * FROM books";
             try (PreparedStatement statement = connection.prepareStatement(selectSQL)) {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
                         int id = resultSet.getInt("id");
-                        String name = resultSet.getString("name");
+                        String name = resultSet.getString("author");
                         System.out.println("ID: " + id + ", Name: " + name);
                     }
                 }
@@ -42,7 +42,7 @@ public class H2Service {
 
     public void operation() {
         Connection connection = null;
-        final String jdbcURL = "jdbc:h2://h2:9092/mem:test";
+        final String jdbcURL = "jdbc:h2://h2:9092/mem:testdb";
         try {
             connection = DriverManager.getConnection(jdbcURL, "sa", "");
 
@@ -55,7 +55,7 @@ public class H2Service {
             // データを挿入
             String insertSQL = "INSERT INTO users (id, name) VALUES (?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(insertSQL)) {
-                statement.setInt(1, 2);
+                statement.setInt(1, 3);
                 statement.setString(2, "John Doe");
                 statement.executeUpdate();
             }
