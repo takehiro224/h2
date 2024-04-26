@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.H2Service;
+import com.service.H2Service;
 
 @Controller
 @RequestMapping("base")
@@ -19,7 +19,7 @@ public class ViewController {
 
     @GetMapping("view")
     public String showView() {
-        h2Service.operation();
+        // h2Service.operation();
         h2Service.select();
         return "main";
     }
