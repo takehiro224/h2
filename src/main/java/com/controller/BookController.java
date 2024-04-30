@@ -45,6 +45,7 @@ public class BookController {
         Book book = new Book();
         book.setTitle("クラウド技術を学ぶ");
         book.setAuthor("山田次郎");
+        bookMapper.insertBook(book);
         model.addAttribute("message", "登録成功");
         return "book/success";
     }
